@@ -1,0 +1,61 @@
+﻿@model WebApplication1.ViewModels.CreateClaimViewModel
+@{
+    ViewData["Title"] = "Submit Claim";
+}
+
+<h2>Submit Claim</h2>
+
+<form asp-action="SubmitClaim" enctype="multipart/form-data" method="post">
+    <div class="form-group">
+        <label>First Name</label>
+        <input asp-for="FirstName" class="form-control" readonly />
+    </div>
+
+    <div class="form-group">
+        <label>Last Name</label>
+        <input asp-for="LastName" class="form-control" readonly />
+    </div>
+
+    <div class="form-group">
+        <label>Hourly Rate</label>
+        <input asp-for="HourlyRate" class="form-control" readonly />
+    </div>
+
+    <div class="form-group">
+        <label>Hours Worked</label>
+        <input asp-for="HoursWorked" class="form-control" id="hoursWorked" />
+        <span asp-validation-for="HoursWorked" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Total Amount</label>
+        <input type="text" id="totalAmount" class="form-control" readonly />
+    </div>
+
+    <div class="form-group">
+        <label>Notes</label>
+        <textarea asp-for="Notes" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label>Supporting Documents</label>
+        <input asp-for="Documents" type="file" class="form-control" multiple />
+        <span asp-validation-for="Documents" class="text-danger"></span>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@section Scripts {
+    <script>
+        const hoursInput = document.getElementById("hoursWorked");
+        const totalInput = document.getElementById("totalAmount");
+        const rate = @Model.HourlyRate;
+
+        hoursInput.addEventListener("input", function() {
+            const hours = parseFloat(hoursInput.value) || 0;
+            totalInput.value = (hours * rate).toFixed(2);
+        });
+    </script>
+}

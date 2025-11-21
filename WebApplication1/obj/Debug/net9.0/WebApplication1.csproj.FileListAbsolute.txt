@@ -436,8 +436,8 @@ C:\Users\lab_services_student\Desktop\PROG6212_P2\WebApplication1\bin\Debug\net9
 C:\Users\lab_services_student\Desktop\PROG6212_P2\WebApplication1\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 C:\Users\lab_services_student\Desktop\PROG6212_P2\prog6212p2\WebApplication1\bin\Debug\net9.0\appsettings.Development.json
 C:\Users\lab_services_student\Desktop\PROG6212_P2\prog6212p2\WebApplication1\bin\Debug\net9.0\appsettings.json
-C:\Users\lab_services_student\Desktop\PROG6212_P2\prog6212p2\WebApplication1\bin\Debug\net9.0\WebApplication1.staticwebassets.endpoints.json
 C:\Users\lab_services_student\Desktop\PROG6212_P2\prog6212p2\WebApplication1\bin\Debug\net9.0\WebApplication1.staticwebassets.runtime.json
+C:\Users\lab_services_student\Desktop\PROG6212_P2\prog6212p2\WebApplication1\bin\Debug\net9.0\WebApplication1.staticwebassets.endpoints.json
 C:\Users\lab_services_student\Desktop\PROG6212_P2\prog6212p2\WebApplication1\bin\Debug\net9.0\WebApplication1.exe
 C:\Users\lab_services_student\Desktop\PROG6212_P2\prog6212p2\WebApplication1\bin\Debug\net9.0\WebApplication1.deps.json
 C:\Users\lab_services_student\Desktop\PROG6212_P2\prog6212p2\WebApplication1\bin\Debug\net9.0\WebApplication1.runtimeconfig.json
@@ -864,10 +864,10 @@ C:\Users\lab_services_student\Desktop\PROG6212_P2\prog6212p2\WebApplication1\obj
 C:\Users\lab_services_student\Desktop\PROG6212_P2\prog6212p2\WebApplication1\obj\Debug\net9.0\staticwebassets.build.json.cache
 C:\Users\lab_services_student\Desktop\PROG6212_P2\prog6212p2\WebApplication1\obj\Debug\net9.0\staticwebassets.development.json
 C:\Users\lab_services_student\Desktop\PROG6212_P2\prog6212p2\WebApplication1\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-C:\Users\lab_services_student\Desktop\PROG6212_P2\prog6212p2\WebApplication1\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 C:\Users\lab_services_student\Desktop\PROG6212_P2\prog6212p2\WebApplication1\obj\Debug\net9.0\WebAppli.7D14BD69.Up2Date
 C:\Users\lab_services_student\Desktop\PROG6212_P2\prog6212p2\WebApplication1\obj\Debug\net9.0\WebApplication1.dll
 C:\Users\lab_services_student\Desktop\PROG6212_P2\prog6212p2\WebApplication1\obj\Debug\net9.0\refint\WebApplication1.dll
 C:\Users\lab_services_student\Desktop\PROG6212_P2\prog6212p2\WebApplication1\obj\Debug\net9.0\WebApplication1.pdb
 C:\Users\lab_services_student\Desktop\PROG6212_P2\prog6212p2\WebApplication1\obj\Debug\net9.0\WebApplication1.genruntimeconfig.cache
 C:\Users\lab_services_student\Desktop\PROG6212_P2\prog6212p2\WebApplication1\obj\Debug\net9.0\ref\WebApplication1.dll
+C:\Users\lab_services_student\Desktop\PROG6212_P2\prog6212p2\WebApplication1\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

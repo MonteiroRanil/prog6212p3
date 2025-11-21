@@ -16,8 +16,9 @@ public class DocumentsController : Controller
 
     // GET: Upload form
     [HttpGet]
-    public IActionResult Upload()
+    public IActionResult Upload(int claimId)
     {
+        ViewBag.ClaimId = claimId;
         return View();
     }
 
@@ -26,14 +27,14 @@ public class DocumentsController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Upload(IFormFile file, int claimId)
     {
-        // Validate file
         if (file == null || file.Length == 0)
         {
             ModelState.AddModelError("", "Please select a file.");
+            ViewBag.ClaimId = claimId;
             return View();
         }
 
-        //Check that claim exists
+        // Check that claim exists
         var claim = await _context.LecturerClaims.FindAsync(claimId);
         if (claim == null)
         {
@@ -41,14 +42,13 @@ public class DocumentsController : Controller
             return View();
         }
 
-        //Create uploads folder if it doesn't exist
+        // Create uploads folder
         var uploadPath = Path.Combine(_env.WebRootPath, "uploads");
         if (!Directory.Exists(uploadPath))
             Directory.CreateDirectory(uploadPath);
 
-        //  Save file with unique name
-        var fileName = Path.GetFileName(file.FileName);
-        var uniqueFileName = $"{Guid.NewGuid()}_{fileName}";
+        // Save file
+        var uniqueFileName = $"{Guid.NewGuid()}_{Path.GetFileName(file.FileName)}";
         var filePath = Path.Combine(uploadPath, uniqueFileName);
 
         using (var stream = new FileStream(filePath, FileMode.Create))
@@ -56,13 +56,13 @@ public class DocumentsController : Controller
             await file.CopyToAsync(stream);
         }
 
-        // Save document info to database
+        // Save document entry in DB
         var document = new ClaimDocument
         {
             ClaimId = claimId,
-            LecturerClaim = claim,   // attach navigation property
-            FileName = fileName,
-            FilePath = "/uploads/" + uniqueFileName, // relative path for download
+            LecturerClaim = claim,
+            FileName = file.FileName,
+            FilePath = "/uploads/" + uniqueFileName,
             ContentType = file.ContentType,
             FileSize = file.Length,
             UploadedAt = DateTime.UtcNow
@@ -71,7 +71,7 @@ public class DocumentsController : Controller
         _context.ClaimDocuments.Add(document);
         await _context.SaveChangesAsync();
 
-        // Redirect to claims page or documents index
-        return RedirectToAction("Index", "Claims");
+        // Fix redirect (no ClaimsController)
+        return RedirectToAction("ClaimsHistory", "Lecturer");
     }
 }

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<WebApplication1.Models.LecturerClaim>
+
+@{
+    ViewData["Title"] = "Manager Pending Claims";
+}
+
+<h2>Claims Pending Your Review</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Claim ID</th>
+            <th>Lecturer</th>
+            <th>Hours Worked</th>
+            <th>Total Amount</th>
+            <th>Submitted At</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var claim in Model)
+        {
+            <tr>
+                <td>@claim.ClaimId</td>
+                <td>@claim.User.FirstName @claim.User.LastName</td>
+                <td>@claim.HoursWorked</td>
+                <td>@claim.TotalAmount</td>
+                <td>@claim.SubmittedAt.ToString("g")</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" asp-controller="Manager" asp-action="ManagerReview" asp-route-id="@claim.ClaimId">Review</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

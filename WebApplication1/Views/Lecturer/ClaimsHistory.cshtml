@@ -1,0 +1,36 @@
+﻿@model IEnumerable<WebApplication1.Models.LecturerClaim>
+@{
+    ViewData["Title"] = "Claims History";
+}
+
+<h2>Claims History</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Claim ID</th>
+            <th>Hours Worked</th>
+            <th>Hourly Rate</th>
+            <th>Total Amount</th>
+            <th>Status</th>
+            <th>Submitted At</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var claim in Model)
+        {
+            <tr>
+                <td>@claim.ClaimId</td>
+                <td>@claim.HoursWorked</td>
+                <td>@claim.HourlyRate</td>
+                <td>@claim.TotalAmount</td>
+                <td>@claim.Status</td>
+                <td>@claim.SubmittedAt.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>
+                    <a asp-action="ClaimDetails" asp-route-id="@claim.ClaimId" class="btn btn-info btn-sm">View</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<dynamic>
+@{
+    ViewBag.Title = "HR Reports";
+}
+
+<h2>HR Reports</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Lecturer</th>
+            <th>Total Hours</th>
+            <th>Total Amount</th>
+            <th>Pending</th>
+            <th>Coordinator Approved</th>
+            <th>Coordinator Rejected</th>
+            <th>Manager Approved</th>
+            <th>Manager Rejected</th>
+            <th>Processed</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Lecturer</td>
+                <td>@item.TotalHours</td>
+                <td>@item.TotalAmount</td>
+                <td>@item.Pending</td>
+                <td>@item.CoordinatorApproved</td>
+                <td>@item.CoordinatorRejected</td>
+                <td>@item.ManagerApproved</td>
+                <td>@item.ManagerRejected</td>
+                <td>@item.Processed</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,35 @@
+﻿@model WebApplication1.Models.LecturerClaim
+
+@{
+    ViewData["Title"] = "Review Claim";
+}
+
+<h2>Review Claim</h2>
+
+<div>
+    <h4>Lecturer: @Model.User.FirstName @Model.User.LastName</h4>
+    <p>Hours Worked: @Model.HoursWorked</p>
+    <p>Hourly Rate: @Model.HourlyRate</p>
+    <p>Total Amount: @Model.TotalAmount</p>
+    <p>Notes: @Model.Notes</p>
+
+    <h5>Documents:</h5>
+    <ul>
+        @foreach (var doc in Model.Documents)
+        {
+            <li><a href="@Url.Content($"~/uploads/{doc.FileName}")" target="_blank">@doc.FileName</a></li>
+        }
+    </ul>
+</div>
+
+<form asp-action="ReviewClaim" method="post">
+    <input type="hidden" name="id" value="@Model.ClaimId" />
+
+    <div class="form-group">
+        <label>Coordinator Comment</label>
+        <textarea class="form-control" name="coordinatorComment"></textarea>
+    </div>
+
+    <button type="submit" name="action" value="approve" class="btn btn-success">Approve</button>
+    <button type="submit" name="action" value="reject" class="btn btn-danger">Reject</button>
+</form>

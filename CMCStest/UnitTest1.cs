@@ -1,7 +1,5 @@
 ﻿using System.IO;
 using System.Security.Claims;
-using System.Threading;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -10,11 +8,12 @@ using Moq;
 using WebApplication1.Controllers;
 using WebApplication1.Data;
 using WebApplication1.Models;
+using WebApplication1.ViewModels;
 using Xunit;
 
 namespace WebApplication1.Tests
 {
-    public class ClaimsControllerTests
+    public class LecturerControllerTests
     {
         private ApplicationDbContext GetInMemoryDbContext()
         {
@@ -24,80 +23,92 @@ namespace WebApplication1.Tests
             return new ApplicationDbContext(options);
         }
 
-        private ClaimsController GetController(ApplicationDbContext context, string userId)
+        private LecturerController GetController(ApplicationDbContext context, ApplicationUser user)
         {
-            var mockUserManager = new Mock<UserManager<IdentityUser>>(
-                Mock.Of<IUserStore<IdentityUser>>(), null, null, null, null, null, null, null, null);
-            var mockEnv = new Mock<IWebHostEnvironment>();
-            mockEnv.Setup(e => e.WebRootPath).Returns(Path.GetTempPath());
+            var mockUserManager = new Mock<UserManager<ApplicationUser>>(
+                Mock.Of<IUserStore<ApplicationUser>>(), null, null, null, null, null, null, null, null);
 
-            var controller = new ClaimsController(context, mockUserManager.Object, mockEnv.Object);
+            mockUserManager.Setup(um => um.GetUserAsync(It.IsAny<ClaimsPrincipal>()))
+                           .ReturnsAsync(user);
 
-            var user = new ClaimsPrincipal(new ClaimsIdentity(new Claim[]
+            var controller = new LecturerController(mockUserManager.Object, context);
+
+            var claimsPrincipal = new ClaimsPrincipal(new ClaimsIdentity(new Claim[]
             {
-                new Claim(ClaimTypes.NameIdentifier, userId)
+                new Claim(ClaimTypes.NameIdentifier, user.Id)
             }, "mock"));
 
             controller.ControllerContext = new ControllerContext
             {
-                HttpContext = new DefaultHttpContext { User = user }
+                HttpContext = new DefaultHttpContext { User = claimsPrincipal }
             };
 
             return controller;
         }
 
-        [Fact]//calculation
-        public async Task CreateClaim_SetsTotalAmountCorrectly()
+        [Fact]
+        public async Task SubmitClaim_CalculatesTotalAmountCorrectly()
         {
             var context = GetInMemoryDbContext();
-            var controller = GetController(context, "user1");
+            var user = new ApplicationUser { Id = "user1", HourlyRate = 100, FirstName = "Test", LastName = "User" };
+            var controller = GetController(context, user);
 
-            await controller.Create(5, 100, "Test note", null);
+            var model = new CreateClaimViewModel
+            {
+                HoursWorked = 5,
+                Notes = "Test note",
+                Documents = new List<IFormFile>() // empty list is fine
+            };
+
+            await controller.SubmitClaim(model);
 
             var claim = await context.LecturerClaims.FirstOrDefaultAsync();
             Assert.NotNull(claim);
             Assert.Equal(500, claim.TotalAmount);
+            Assert.Equal("Test note", claim.Notes);
         }
 
         [Fact]
-        public async Task CreateClaim_SavesAdditionalNotes()
+        public async Task SubmitClaim_SavesMultipleDocuments()
         {
             var context = GetInMemoryDbContext();
-            var controller = GetController(context, "user1");
+            var user = new ApplicationUser { Id = "user1", HourlyRate = 100, FirstName = "Test", LastName = "User" };
+            var controller = GetController(context, user);
 
-            await controller.Create(3, 50, "This is an additional note", null);
+            // Mock multiple files
+            var files = new List<IFormFile>();
+            for (int i = 0; i < 2; i++)
+            {
+                var fileMock = new Mock<IFormFile>();
+                var content = $"Dummy content {i}";
+                var fileName = $"test{i}.pdf";
+                var ms = new MemoryStream();
+                var writer = new StreamWriter(ms);
+                writer.Write(content);
+                writer.Flush();
+                ms.Position = 0;
 
-            var claim = await context.LecturerClaims.FirstOrDefaultAsync();
-            Assert.NotNull(claim);
-            Assert.Equal("This is an additional note", claim.Notes);
-        }
+                fileMock.Setup(f => f.OpenReadStream()).Returns(ms);
+                fileMock.Setup(f => f.FileName).Returns(fileName);
+                fileMock.Setup(f => f.Length).Returns(ms.Length);
+                fileMock.Setup(f => f.ContentType).Returns("application/pdf");
 
-        [Fact] //docs
-        public async Task CreateClaim_SavesSupportingDocument()
-        {
-            var context = GetInMemoryDbContext();
-            var controller = GetController(context, "user1");
+                files.Add(fileMock.Object);
+            }
 
-            var fileMock = new Mock<IFormFile>();
-            var content = "Dummy file content";
-            var fileName = "test.pdf";
-            var ms = new MemoryStream();
-            var writer = new StreamWriter(ms);
-            writer.Write(content);
-            writer.Flush();
-            ms.Position = 0;
+            var model = new CreateClaimViewModel
+            {
+                HoursWorked = 2,
+                Notes = "With multiple documents",
+                Documents = files
+            };
 
-            fileMock.Setup(f => f.OpenReadStream()).Returns(ms);
-            fileMock.Setup(f => f.FileName).Returns(fileName);
-            fileMock.Setup(f => f.Length).Returns(ms.Length);
-            fileMock.Setup(f => f.ContentType).Returns("application/pdf");
+            await controller.SubmitClaim(model);
 
-            await controller.Create(2, 100, "With document", fileMock.Object);
-
-            var document = await context.ClaimDocuments.FirstOrDefaultAsync();
-            Assert.NotNull(document);
-            Assert.Equal(fileName, document.FileName);
-            Assert.Equal("application/pdf", document.ContentType);
+            var documents = await context.ClaimDocuments.ToListAsync();
+            Assert.Equal(2, documents.Count);
+            Assert.Contains(documents, d => d.FileName == "test0.pdf");
+            Assert.Contains(documents, d => d.FileName == "test1.pdf");
         }
     }
-}//chat was used for the unit tests
+}

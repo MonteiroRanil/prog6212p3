@@ -1,0 +1,48 @@
+﻿@model WebApplication1.Models.LecturerClaim
+
+@{
+    ViewData["Title"] = "Manager Review Claim";
+}
+
+<h2>Review Claim ID: @Model.ClaimId</h2>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <p><strong>Lecturer:</strong> @Model.User.FirstName @Model.User.LastName</p>
+        <p><strong>Hours Worked:</strong> @Model.HoursWorked</p>
+        <p><strong>Hourly Rate:</strong> @Model.HourlyRate</p>
+        <p><strong>Total Amount:</strong> @Model.TotalAmount</p>
+        <p><strong>Notes:</strong> @Model.Notes</p>
+        <p><strong>Submitted At:</strong> @Model.SubmittedAt.ToString("g")</p>
+        <p><strong>Status:</strong> @Model.Status.ToString()</p>
+
+        <h5>Supporting Documents:</h5>
+        <ul>
+            @if (Model.Documents != null && Model.Documents.Any())
+            {
+                foreach (var doc in Model.Documents)
+                {
+                    <li>
+                        <a href="@Url.Content(doc.FilePath)" target="_blank">@doc.FileName</a>
+                    </li>
+                }
+            }
+            else
+            {
+                <li>No documents uploaded.</li>
+            }
+        </ul>
+    </div>
+</div>
+
+<form asp-action="ManagerReview" method="post">
+    <input type="hidden" name="id" value="@Model.ClaimId" />
+    <div class="form-group">
+        <label for="comment">Comment (optional)</label>
+        <textarea class="form-control" id="comment" name="comment" rows="3">@Model.ManagerComment</textarea>
+    </div>
+
+    <button type="submit" name="actionType" value="approve" class="btn btn-success">Approve</button>
+    <button type="submit" name="actionType" value="reject" class="btn btn-danger">Reject</button>
+    <a asp-action="ManagerPending" class="btn btn-secondary">Back</a>
+</form>

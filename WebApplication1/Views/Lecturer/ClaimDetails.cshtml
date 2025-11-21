@@ -1,0 +1,25 @@
+﻿@model WebApplication1.Models.ClaimDetailsViewModel
+@{
+    ViewData["Title"] = "Claim Details";
+}
+
+<h2>Claim Details</h2>
+
+<div>
+    <p><strong>Lecturer:</strong> @Model.LecturerName</p>
+    <p><strong>Hours Worked:</strong> @Model.HoursWorked</p>
+    <p><strong>Hourly Rate:</strong> @Model.HourlyRate</p>
+    <p><strong>Total Amount:</strong> @Model.TotalAmount</p>
+    <p><strong>Status:</strong> @Model.Status</p>
+    <p><strong>Notes:</strong> @Model.Notes</p>
+
+    <h4>Supporting Documents:</h4>
+    <ul>
+        @foreach (var doc in Model.Documents)
+        {
+            <li><a href="@doc" target="_blank">@System.IO.Path.GetFileName(doc)</a></li>
+        }
+    </ul>
+</div>
+
+<a asp-action="ClaimsHistory" class="btn btn-secondary">Back to History</a>

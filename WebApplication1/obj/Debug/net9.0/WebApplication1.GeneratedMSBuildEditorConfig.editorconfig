@@ -56,40 +56,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lab_services_student/Desktop/PROG6212_P2/prog6212p2/WebApplication1/Views/Claims/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhaW1zXENyZWF0ZS5jc2h0bWw=
+[C:/Users/lab_services_student/Desktop/PROG6212_P2/prog6212p2/WebApplication1/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lab_services_student/Desktop/PROG6212_P2/prog6212p2/WebApplication1/Views/Claims/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhaW1zXERldGFpbHMuY3NodG1s
+[C:/Users/lab_services_student/Desktop/PROG6212_P2/prog6212p2/WebApplication1/Views/Coordinator/PendingClaims.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29vcmRpbmF0b3JcUGVuZGluZ0NsYWltcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/lab_services_student/Desktop/PROG6212_P2/prog6212p2/WebApplication1/Views/Claims/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhaW1zXEluZGV4LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/lab_services_student/Desktop/PROG6212_P2/prog6212p2/WebApplication1/Views/Claims/Submitted.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhaW1zXFN1Ym1pdHRlZC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/lab_services_student/Desktop/PROG6212_P2/prog6212p2/WebApplication1/Views/Coordinator/Approved.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29vcmRpbmF0b3JcQXBwcm92ZWQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/lab_services_student/Desktop/PROG6212_P2/prog6212p2/WebApplication1/Views/Coordinator/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29vcmRpbmF0b3JcQ3JlYXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/lab_services_student/Desktop/PROG6212_P2/prog6212p2/WebApplication1/Views/Coordinator/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29vcmRpbmF0b3JcSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/lab_services_student/Desktop/PROG6212_P2/prog6212p2/WebApplication1/Views/Coordinator/Rejected.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29vcmRpbmF0b3JcUmVqZWN0ZWQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/lab_services_student/Desktop/PROG6212_P2/prog6212p2/WebApplication1/Views/Coordinator/Review.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29vcmRpbmF0b3JcUmV2aWV3LmNzaHRtbA==
+[C:/Users/lab_services_student/Desktop/PROG6212_P2/prog6212p2/WebApplication1/Views/Coordinator/ReviewClaim.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29vcmRpbmF0b3JcUmV2aWV3Q2xhaW0uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/lab_services_student/Desktop/PROG6212_P2/prog6212p2/WebApplication1/Views/Documents/Index.cshtml]
@@ -106,6 +82,42 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/lab_services_student/Desktop/PROG6212_P2/prog6212p2/WebApplication1/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lab_services_student/Desktop/PROG6212_P2/prog6212p2/WebApplication1/Views/HR/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSFJcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lab_services_student/Desktop/PROG6212_P2/prog6212p2/WebApplication1/Views/HR/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSFJcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lab_services_student/Desktop/PROG6212_P2/prog6212p2/WebApplication1/Views/HR/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSFJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lab_services_student/Desktop/PROG6212_P2/prog6212p2/WebApplication1/Views/HR/Reports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSFJcUmVwb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lab_services_student/Desktop/PROG6212_P2/prog6212p2/WebApplication1/Views/Lecturer/ClaimDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVjdHVyZXJcQ2xhaW1EZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lab_services_student/Desktop/PROG6212_P2/prog6212p2/WebApplication1/Views/Lecturer/ClaimsHistory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVjdHVyZXJcQ2xhaW1zSGlzdG9yeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lab_services_student/Desktop/PROG6212_P2/prog6212p2/WebApplication1/Views/Lecturer/SubmitClaim.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVjdHVyZXJcU3VibWl0Q2xhaW0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lab_services_student/Desktop/PROG6212_P2/prog6212p2/WebApplication1/Views/Manager/ManagerPending.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuYWdlclxNYW5hZ2VyUGVuZGluZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lab_services_student/Desktop/PROG6212_P2/prog6212p2/WebApplication1/Views/Manager/ManagerReview.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuYWdlclxNYW5hZ2VyUmV2aWV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/lab_services_student/Desktop/PROG6212_P2/prog6212p2/WebApplication1/Views/Shared/Error.cshtml]

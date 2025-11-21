@@ -1,0 +1,33 @@
+﻿@model IEnumerable<WebApplication1.Models.LecturerClaim>
+
+@{
+    ViewData["Title"] = "Pending Claims";
+}
+
+<h2>Pending Claims</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Lecturer</th>
+            <th>Hours Worked</th>
+            <th>Total Amount</th>
+            <th>Submitted At</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var claim in Model)
+        {
+            <tr>
+                <td>@claim.User.FirstName @claim.User.LastName</td>
+                <td>@claim.HoursWorked</td>
+                <td>@claim.TotalAmount</td>
+                <td>@claim.SubmittedAt.ToString("g")</td>
+                <td>
+                    <a class="btn btn-primary" href="@Url.Action("ReviewClaim", "Coordinator", new { id = claim.ClaimId })">Review</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
